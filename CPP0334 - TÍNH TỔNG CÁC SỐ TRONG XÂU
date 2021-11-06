@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--) {
+		string a;
+		long long sum = 0,
+				  so = 0;
+		cin >> a;
+		for(int i = 0; i < a.size(); i++) {
+			if (a[i] < '0' || a[i] > '9') {
+				sum += so; 
+				so = 0;
+			}
+			else so = so*10 + (a[i] - '0');
+		}
+		sum += so;
+		cout << sum << endl;
+	}
+}
