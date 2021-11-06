@@ -1,0 +1,32 @@
+#include <iostream> 
+#include <math.h>
+using namespace std;
+long check[1000001];
+
+int main() {
+	for(long i=1; i<1000001; i++) {
+		check[i] = 1;
+	}
+	for(long i=2; i<1000001; i++) {
+		if (check[i] == 1) {
+			for(long j=i*2; j<1000001; j+=i) {
+				check[j] = 0;
+			}
+		}
+	}
+	int t;
+	cin >> t;
+	while(t--) {
+		long long l, r, dem = 0;
+		cin >> l >> r; 
+		for (long long i = 2; i <= 1000001; i++) {
+			if (check[i] == 1 && i*i >= l && i*i <= r) {
+				dem++;
+			} 
+			if (i*i > r) {
+				break;
+			}
+		}
+		cout << dem << endl;
+	}
+}
