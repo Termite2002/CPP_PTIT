@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string check(string a) {
+	for (int i = a.size()-2; i >= 0; i--) {
+		int logic = 0,
+		 	hieu = 10,
+		  	change;
+		for (int j = i+1; j < a.size(); j++) {
+			if (a[i] > a[j]) {
+				logic = 1;
+				if ((a[i] - a[j]) < hieu) {
+					hieu = a[i] - a[j];
+					change = j;
+				}
+			}
+		}
+		if (logic == 1) {
+			char temp = a[i];
+			a[i] = a[change];
+			a[change] = temp;
+			if (a[0] == '0') return "-1";
+			return a;
+		}
+	}
+	return "-1";
+}
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--) {
+		string a;
+		cin >> a;
+		cout << check(a) << endl;
+	}
+}
